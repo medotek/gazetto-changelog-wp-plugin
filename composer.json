@@ -1,0 +1,15 @@
+{
+  "name": "medotek/gazetto-changelog-wp",
+  "autoload": {
+    "psr-4": {
+      "Medo\\GChangelog": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Medo",
+      "email": "tomsyan03@gmail.com"
+    }
+  ],
+  "require": {}
+}
