@@ -2,7 +2,7 @@
   "name": "medotek/gazetto-changelog-wp",
   "autoload": {
     "psr-4": {
-      "Medo\\GChangelog": "src/"
+      "Medo\\GChangelog\\": "src/"
     }
   },
   "authors": [

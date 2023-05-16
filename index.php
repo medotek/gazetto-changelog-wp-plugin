@@ -12,5 +12,5 @@
 $autoload = __DIR__ . '/vendor/autoload.php';
 if (file_exists($autoload)) {
     require_once $autoload;
-    $plugin = \AxConverteo\src\Plugin::getInstance();
+    $plugin = \Medo\GChangelog\Plugin::getInstance();
 }

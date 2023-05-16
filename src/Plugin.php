@@ -1,13 +1,13 @@
 <?php
 
-namespace Medo\GChangelog\src;
+namespace Medo\GChangelog;
 
 class Plugin
 {
-    public static $plugin_name = 'gchangelog';
-    public $pluginFilePath;
-    public $pluginUrl;
-    public $assetsUrl;
+    public static string $plugin_name = 'gchangelog';
+    public string $pluginFilePath;
+    public string $pluginUrl;
+    public string $assetsUrl;
     private static $instance;
 
     public static function getInstance(): Plugin
@@ -34,20 +34,20 @@ class Plugin
 
     public function initActions()
     {
-//        $this->registerAssets();
-        $this->initShortcodes();
+	    $this->registerShortcodes();
     }
 
-//    public function registerAssets()
-//    {
-//        if (!is_admin()) {
-//            wp_enqueue_script('gchangelog_js', $this->assetsUrl . '/bundle.js', [], '1.0.0', true);
-//        }
-//    }
-
-    public function initShortcodes() {
-        add_shortcode('bienvenue', 'shortcode_bienvenue');
-        wp_enqueue_script("zz-shortcode-jscss-script",array('jquery') , '1.0', true);
-        wp_enqueue_style("zz-shortcode-jscss-style");
+	public function registerScripts() {
+		wp_register_script('gchangelog_js', $this->assetsUrl . '/js/index.js', [], '1.0.0', true);
+		wp_enqueue_style('gchangelog_css', $this->assetsUrl . '/css/index.css', [], '1.0.0');
+		wp_enqueue_script( 'gchangelog_js' );
+	}
+    public function registerShortcodes() {
+	    add_shortcode('gazetto-changelog', [$this,'shortcodeCallback']);
     }
+
+	public function shortcodeCallback() {
+		$this->registerScripts();
+		return '<div id="app"></div>';
+	}
 }
