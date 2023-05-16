@@ -38,15 +38,15 @@ class Plugin
     }
 
 	public function registerScripts() {
-		wp_register_script('gchangelog_js', $this->assetsUrl . '/js/index.js', [], '1.0.0', true);
-		wp_enqueue_style('gchangelog_css', $this->assetsUrl . '/css/index.css', [], '1.0.0');
+		wp_register_script('gchangelog_js', $this->assetsUrl . '/js/gchangelog.js', [], '1.0.0', true);
+		wp_enqueue_style('gchangelog_css', $this->assetsUrl . '/css/gchangelog.css', [], '1.0.0');
 		wp_enqueue_script( 'gchangelog_js' );
 	}
     public function registerShortcodes() {
 	    add_shortcode('gazetto-changelog', [$this,'shortcodeCallback']);
     }
 
-	public function shortcodeCallback() {
+	public function shortcodeCallback(): string {
 		$this->registerScripts();
 		return '<div id="app"></div>';
 	}
