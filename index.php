@@ -14,5 +14,7 @@ if (file_exists($autoload)) {
     require_once $autoload;
 
     if (strstr($_SERVER['REQUEST_URI'], '/wp-admin/') && isset($_GET['action']) && $_GET['action'] == 'elementor')
-        $plugin = \Medo\GChangelog\Plugin::getInstance();
+        return;
+
+    $plugin = \Medo\GChangelog\Plugin::getInstance();
 }
